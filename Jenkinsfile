@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                echo "this is Build job"
+                git credentialsId: 'krishnavagu', url: 'https://github.com/krishnavagu/redbus_new.git'
             }
         }
-        stage('Test') { 
+        stage('Maven Job') { 
             steps {
-                echo "this is Test job" 
+                sh label: '', script: 'mvn clean package'
             }
         }
         stage('Deploy') { 
